@@ -32,17 +32,16 @@ def janken_game
   janken_game
  elsif my_hand==0 && your_hand==1 || my_hand==1 && your_hand==2 || my_hand==2 && your_hand==0
   puts "あなたの勝ちです。"
-  hoi()
+  hoi_win()
  else
   puts "あなたの負けです。"
-  puts "-------------------"
-  janken_game
+  hoi_lose()
  end
 end
  
  
  
-def hoi()
+def hoi_win()
  puts "--------------------"
  puts "あっちむいて〜"
  puts "0(上)1(下)2(左)3(右)"
@@ -71,5 +70,36 @@ def hoi()
   janken_game
  end
 end
+
+def hoi_lose()
+ puts "--------------------"
+ puts "あっちむいて〜"
+ puts "0(上)1(下)2(左)3(右)"
+
+ my_finger = gets.to_i
+ puts "ホイ！"
+ puts "--------------------"
+
+ finger = ["上","下","左","右"]
+ your_finger = rand(4)
+ 
+ if my_finger > 3
+  puts "0~3の値を入力してください。"
+  hoi()
+ end
+
+ puts "あなた:#{finger[my_finger]}"
+ puts "相手:#{finger[your_finger]}"
+ puts "--------------------"
+
+ if my_finger ==0 && your_finger ==0 || my_finger ==1 && your_finger ==1 || my_finger ==2 && your_finger ==2 || my_finger ==3 && your_finger ==3
+  puts "あなたの負けです。"
+ else
+  puts "上手に回避しました。"
+  puts "-------------------"
+  janken_game
+ end
+end
+
 
 janken_game()
